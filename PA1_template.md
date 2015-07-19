@@ -33,7 +33,7 @@ print(xtable(head(activityData)), type="html")
 ```
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sun Jul 19 12:03:02 2015 -->
+<!-- Sun Jul 19 12:10:59 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> steps </th> <th> date </th> <th> interval </th>  </tr>
   <tr> <td align="right"> 1 </td> <td align="right">  </td> <td> 2012-10-01 </td> <td align="right">   0 </td> </tr>
@@ -60,7 +60,7 @@ print(xtable(as.data.frame(stepsPerDay)), type="html")
 ```
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sun Jul 19 12:03:02 2015 -->
+<!-- Sun Jul 19 12:10:59 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> stepsPerDay </th>  </tr>
   <tr> <td align="right"> 2012-10-01 </td> <td align="right">   0 </td> </tr>
@@ -134,13 +134,9 @@ We plot a histogram of total daily steps for all days for which activity was mon
 ```r
 dailySteps <- ggplot(as.data.frame(stepsPerDay), 
                      aes(x=stepsPerDay)) + 
-  geom_histogram() + 
+  geom_histogram(binwidth=1000) + 
   xlab('total steps per day')
 dailySteps
-```
-
-```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![plot of chunk totalstepshistogram](figure/totalstepshistogram-1.png) 
@@ -242,7 +238,7 @@ print(xtable(head(imputedData)), type="html")
 ```
 
 <!-- html table generated in R 3.2.1 by xtable 1.7-4 package -->
-<!-- Sun Jul 19 12:03:03 2015 -->
+<!-- Sun Jul 19 12:11:00 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> imputedSteps </th> <th> date </th> <th> interval </th>  </tr>
   <tr> <td align="right"> 1 </td> <td align="right"> 1.72 </td> <td> 2012-10-01 </td> <td align="right">   0 </td> </tr>
@@ -264,13 +260,9 @@ imputedStepsPerDay <- tapply(imputedData$imputedSteps,
                       sum, na.rm=T)
 imputedDailySteps <- ggplot(as.data.frame(imputedStepsPerDay), 
                             aes(x=imputedStepsPerDay)) + 
-  geom_histogram() + 
+  geom_histogram(binwidth=1000) + 
   xlab('total steps per day')
 imputedDailySteps
-```
-
-```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![plot of chunk imputedtotalsteps](figure/imputedtotalsteps-1.png) 

@@ -51,7 +51,7 @@ We plot a histogram of total daily steps for all days for which activity was mon
 ```{r totalstepshistogram}
 dailySteps <- ggplot(as.data.frame(stepsPerDay), 
                      aes(x=stepsPerDay)) + 
-  geom_histogram() + 
+  geom_histogram(binwidth=1000) + 
   xlab('total steps per day')
 dailySteps
 ```
@@ -141,7 +141,7 @@ imputedStepsPerDay <- tapply(imputedData$imputedSteps,
                       sum, na.rm=T)
 imputedDailySteps <- ggplot(as.data.frame(imputedStepsPerDay), 
                             aes(x=imputedStepsPerDay)) + 
-  geom_histogram() + 
+  geom_histogram(binwidth=1000) + 
   xlab('total steps per day')
 imputedDailySteps
 ```
